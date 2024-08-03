@@ -8,21 +8,6 @@ void main() {
   );
 }
 
-class CounterWidget extends InheritedWidget {
-  const CounterWidget({super.key, required this.counter, required super.child});
-
-  final int counter;
-
-  @override
-  bool updateShouldNotify(covariant CounterWidget oldWidget) {
-    return counter != oldWidget.counter;
-  }
-
-  static CounterWidget of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<CounterWidget>()!;
-  }
-}
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -52,8 +37,23 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+class CounterWidget extends InheritedWidget {
+  const CounterWidget({super.key, required this.counter, required super.child});
+
+  final int counter;
+
+  @override
+  bool updateShouldNotify(covariant CounterWidget oldWidget) {
+    return counter != oldWidget.counter;
+  }
+
+  static CounterWidget of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<CounterWidget>()!;
+  }
+}
+
 class SecondScreen extends StatelessWidget {
-  const SecondScreen({Key? key}) : super(key: key);
+  const SecondScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class SecondScreen extends StatelessWidget {
 }
 
 class ThirdScreen extends StatelessWidget {
-  const ThirdScreen({Key? key}) : super(key: key);
+  const ThirdScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
