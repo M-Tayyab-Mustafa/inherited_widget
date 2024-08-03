@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:inherited_widget/counter.dart';
+
+import 'second.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,17 +11,24 @@ class HomeScreen extends StatelessWidget {
     return CounterWidget(
       counter: 5,
       child: Scaffold(
-        body: Builder(
-          builder: (BuildContext innerContext) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const SecondScreen())), child: const Text('New Page')),
-                ],
+        appBar: AppBar(title: const Text('Home Screen')),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SecondScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Go to Second Screen'),
               ),
-            );
-          },
+            ],
+          ),
         ),
       ),
     );

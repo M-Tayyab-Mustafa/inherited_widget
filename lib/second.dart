@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/counter.dart';
+import 'counter.dart';
+import 'third.dart';
 
 class SecondScreen extends StatelessWidget {
   const SecondScreen({super.key});
@@ -8,8 +9,25 @@ class SecondScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final counter = CounterWidget.of(context).counter;
     return Scaffold(
+      appBar: AppBar(title: const Text('Second Screen')),
       body: Center(
-        child: Text(counter.toString()),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Counter in Second Screen: $counter'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ThirdScreen(),
+                  ),
+                );
+              },
+              child: const Text('Go to Third Screen'),
+            ),
+          ],
+        ),
       ),
     );
   }
